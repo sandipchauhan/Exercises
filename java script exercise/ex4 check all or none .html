@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<body>
+<h1 align="center">click the button to check all or none</h1>
+<form>
+<input type="checkbox" id="myCheck1">RED
+<input type="checkbox" id="myCheck2">GREEN
+<input type="checkbox" id="myCheck3">YELLOW
+<input type="checkbox" id="myCheck4">WHITE
+<input type="checkbox" id="myCheck5">BLACK
+</form>
+<br>
+
+<button onclick="checked()">check all </button>
+<button onclick="unchecked()">none </button>
+
+<script>
+function checked()
+  {
+  document.getElementById("myCheck1").checked=true;
+  document.getElementById("myCheck2").checked=true;
+  document.getElementById("myCheck3").checked=true; 
+  document.getElementById("myCheck4").checked=true; 
+  document.getElementById("myCheck5").checked=true; 
+
+  }
+function unchecked()
+  {
+  document.getElementById("myCheck1").checked=false;
+  document.getElementById("myCheck2").checked=false;
+  document.getElementById("myCheck3").checked=false;
+  document.getElementById("myCheck4").checked=false;
+  document.getElementById("myCheck5").checked=false;
+
+  }
+</script>
+
+</ body>
+
+</head>
+</html>

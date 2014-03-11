@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Check the checkbox to return which type of form element it is.</p>
+
+<form>
+<input type="checkbox" onclick="myFunction()" id="myCheck" value="Red<br>YEllow<br>Green<br>Blue">Color<br><br>
+<input type="checkbox" onclick="myfunction()" id="myCheck2" value="Pepsi<br>coke<br>Dew">Drinks<br><br>
+<input type="checkbox" onclick="MyFunction()" id="myCheck3" value="v-rod<br>Pulsar<br>CBZ">Bikes<br><br>
+<input type="checkbox" onclick="Myfunction()" id="myCheck4" value="Dar<br>Sir">movies<br><br>
+ 
+ 
+</form>
+
+<p id="demo"></p>
+<p id="demo"></p>
+<p id="demo"></p>
+ 
+<script>
+function myFunction()
+{
+var x = document.getElementById("myCheck").value;
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+<script>
+function myfunction()
+{
+var x = document.getElementById("myCheck2").value;
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+<script>
+function MyFunction()
+{
+var x = document.getElementById("myCheck3").value;
+document.getElementById("demo").innerHTML=x;
+}
+</script>
+<script>
+function Myfunction()
+{
+var x = document.getElementById("myCheck4").value;
+document.getElementById("demo").innerHTML=x;	
+}
+</script>
+
+</body>
+</html>
