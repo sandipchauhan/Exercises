@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html>
-<body>
-
-<p id="demo">Click the button to return the domain name of the current URL.</p>
-<input type="text"id="mytext">
-
-<button onclick="myFunction()">Try it</button>
-<p id="demo"></p>
-
-<script>
-function myFunction()
+<head>
+<title>Domain and subdomain</title>
+</head>
+  
+  <body><h1>Enter url for see Domain or subDomain</h1>
+    <form name="UrlEntryForm" onSubmit="return findDomain('url')" method="post">
+      <label for="Enter URL">Enter the URL </label>
+      <input type="text" name="textField" id="url">
+      <input type="submit" value="SUBMIT" >
+    </form>
+    <script type="text/javascript">
+ var validURLPattern, url, subDomain, domain;
+function findDomain(urlBoxId) 
 {
-var x = document.getElementById("mytext").domainname;
-document.getElementById("demo").innerHTML=x;
+   
+    url = document.getElementById(urlBoxId).value;
+    url = url.trim();
+    validURLPattern = /^(?:(?:http|https):\/\/)?((?:\w{3}\.)?(?:\w+\.)*)+(\w+)?(\.\w{2,4}){1}$/;
+    if (validURLPattern.test(url)) {
+        domain = RegExp.$2 + RegExp.$3;
+        subDomain = RegExp.$1.replace(/\.$/,"");
+        if (subDomain === "") {
+            alert("Domain: " + domain);
+        } else {
+            alert("Domain: " + domain + " ," + " SubDomain: " + subDomain);
+        }
+        return true;
+    } else {
+        alert("Please Enter Valid URL");
+        return false;
+    }
 }
-</script>
-
-</body>
+    </script>
+  </body>
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<HEAD><title>Dictionary</title>
+ <SCRIPT LANGUAGE="JavaScript">
+
+
+function jump2form() {
+  document.dict_form.term.select();
+  document.dict_form.term.focus();
+}
+function isblank(s)
+{
+  for(var i = 0; i < s.length; i++) {
+    var c = s.charAt(i);
+    if ((c != ' ') && (c != '\n') && (c != '\t')) return false;
+  }
+  return true;
+}
+function formcheck() {
+  var d = document.dict_form.db[1].checked;
+  var e = document.dict_form.term.value;
+  if ((e == null) || (e == "") || isblank(e)) {
+    alert("Please enter a word to look up.");
+    jump2form();
+  }
+  else if (d ==1) {
+    location.href = ("http://www.shabdkosh.com/=" + escape(e));
+  }
+  else {
+    location.href= ("http://www.dictionary.com/cgi-bin/dict.pl?term=" + escape(e));
+  }
+  return false;
+}
+function ahdpop() {
+win=window.open("http://www.dictionary.com/help/ahd3key.html",'AHDKey','width=500,height=330,toolbar=no,location=no,directories=no,menubar=no,scrollbars=yes,resizable=yes');
+  return false;
+}
+//  End -->
+</script>
+
+</HEAD>
+
+ 
+<BODY style="background-color:yellow;"><h1 align="center" style="font-family:arial;color:red;">json based dictionary</h1>
+
+<FORM NAME="dict_form" METHOD="GET" ACTION="/cgi-bin/dict.pl" onsubmit="return formcheck();">
+
+<h2 style="font-family:arial;color:blue ;">Look up:</h2>
+<INPUT TYPE="text" NAME="term" SIZE=17 MAXLENGTH=48 VALUE="" style="font-size:11pt;"> 
+<INPUT TYPE="submit" VALUE="OK" STYLE="font-size:11pt;">
+<h3 style="font-family:arial;color:green ;">Search:</h3>
+<INPUT TYPE="RADIO"  NAME="db" VALUE="*" CHECKED >Dictionary 
+<INPUT TYPE="RADIO" NAME="db" VALUE="roget">Shabdkosh(Hindi meaning)
+ 
+</FORM>
+
+
+</body>
+</html> 

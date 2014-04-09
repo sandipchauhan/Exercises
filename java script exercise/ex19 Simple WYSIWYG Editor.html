@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+ <html>
+<head >
+    <title>Simple WYSIWYG Editor</title>
+    <script type="text/javascript">
+function setFont()
+{
+    var selectFont = document.getElementById("font");
+    if (selectFont) {
+        var selectFontValue = selectFont.options[selectFont.selectedIndex].value;
+        if (selectFontValue == "Italic bold") {
+            document.getElementById("Text10").style.font = "italic bold    12px arial,serif";
+        }
+        else if (selectFontValue == "Plain") {
+            document.getElementById("Text10").style.font = "12px arial,serif";
+        }
+        else if (selectFontValue == "Bold") {
+            document.getElementById("Text10").style.font = "bold 12px arial,serif";
+        }
+        else {
+            document.getElementById("Text10").style.font = "italic 12px arial,serif";
+        }
+    }
+}
+</script>
+</head>
+<body>
+	 
+	<h1 style="font-family:arial;color:red;"> Select and change the text type </h1>
+    <form id="form1" >
+    <div><br><br><br><br>
+    text<input id="Text10" type="text" placeholder="Anything you want"/><br><br><br><br>
+       
+<select id ="font">
+        <option value="Plain">Plain</option>
+        <option value="Bold">Bold</option>
+        <option value="Italic">Italic</option>
+        <option value="Italic bold">Italic bold</option>
+        </select>
+<input type="button" onclick="setFont()" value="Change font" />
+ 
+
+    </div>
+    </form>
+</body>
+</html>
+
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Input URL and open it</title>
+</head>
+   
+  <body onload="askURLPrompt() ">
+  	<h1>input URL and Open in new window </h1>
+  </body>
+  <script type="text/javascript">
+function askURLPrompt() 
+{
+     
+    var url;
+    url = prompt("Please enter URL ", "http://www.facebook.com/");
+    url = url.trim();
+    if ((url === null) || (url.length === 0)) {
+        alert("Enter a valid URL address");
+    } else {
+        window.open(url, "height=450px width=400px scrollbars=yes status=yes location=yes titlebar=yes resizeable=yes scrollable=yes");
+    }
+}
+  </script>
+</html>

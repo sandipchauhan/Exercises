@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head><title>Restaurant Menu</title></head>
+<body style="background-color:yellow";>
+<script language="JavaScript">
+ 
+        var Cost, GST, PST, Grand_Total;
+
+function tally()
+        {
+        Cost = 0;
+        if (document.orderform.Item1.checked) { Cost = Cost + 50;    }
+        if (document.orderform.Item2.checked) { Cost = Cost + 40;    }
+        if (document.orderform.Item3.checked) { Cost = Cost + 40;               }
+        if (document.orderform.Item4.checked) { Cost = Cost + 30;               }
+        if (document.orderform.Item5.checked) { Cost = Cost + 40;    }
+        if (document.orderform.Item6.checked) { Cost = Cost + 30;    }
+        if (document.orderform.Item7.checked) { Cost = Cost + 30;               }
+        if (document.orderform.Item8.checked) { Cost = Cost + 40;               }
+       if (document.orderform.Item9.checked) {  Cost = Cost + 50;               }
+              if (document.orderform.Item10.checked) {  Cost = Cost + 80;               }
+       if (document.orderform.Item11.checked) {  Cost = Cost + 100;               }
+
+
+        GST = (Cost * 0.12);
+        PST = (Cost * 0.05);
+
+      
+        Grand_Total = parseFloat(Cost) + parseFloat(GST) + parseFloat(PST);
+        Grand_Total = dollar(Grand_Total);
+
+        document.orderform.Total.value = "Rs" + Cost;
+        document.orderform.GST.value = "Rs" + GST;
+        document.orderform.PST.value = "Rs" + PST;
+        document.orderform.GrandTotal.value = "Rs" + Grand_Total;
+        }
+
+function dollar (amount)
+{
+        amount = parseInt(amount * 100);
+        amount = parseFloat(amount/100);
+        if (((amount) == Math.floor(amount)) && ((amount - Math.floor (amount)) == 0))
+        {
+                amount = amount + ".00"
+                return amount;
+        }
+        if ( ((amount * 10) - Math.floor(amount * 10)) == 0)
+        {
+                amount = amount + "0";
+                return amount;
+        }
+        if ( ((amount * 100) - Math.floor(amount * 100)) == 0)
+        {
+                amount = amount;
+                return amount;
+        }
+        return amount;
+}
+  
+
+ </script>
+<center><h1 style="font-family:barial;color:blue;">Restaurant Menu</h1></center>
+<form method="post" name="orderform" action="mailto:me@mydomain.com" enctype="text/plain"">
+<table border="0"><h2>
+    <tr><td colspan="4"><b style="font-family:barial;color:green;"><h2>Drinks</h2></b>
+<p ><input type="checkbox" name="Item1" value="Item1_chosen" onclick="tally()"> <b>Coke ................................................................................................................................Rs50</b>
+<p><input type="checkbox" name="Item2" value="Item2_chosen" onclick="tally()"> <b>Pepsi .........................................................................................................................................Rs.40</b>
+<p><input type="checkbox" name="Item3" value="Item3_chosen" onclick="tally()"> <b>Dew .....................................................................................................................................................Rs.40</b>
+ <br><br><br>
+   <b style="font-family:barial;color:green;"><h2>Breads</h2></b>
+<p><input type="checkbox" name="Item4" value="Item4_chosen" onclick="tally()"><b> Brown ...................................................................................................................................................Rs.30</b>
+<p><input type="checkbox" name="Item5" value="Item5_chosen" onclick="tally()"> <b>Multigrain .......................................................................................................................................Rs.40</b>
+<p><input type="checkbox" name="Item6" value="Item6_chosen" onclick="tally()"> <b>White ...................................................................................................................................Rs.30</b>
+ <br><br><br>
+   <b style="font-family:barial;color:green;"><h2>Sauces</h2></b>
+<p><input type="checkbox" name="Item7" value="Item7_chosen" onclick="tally()"> <b>Tomato ...................................................................................................................................Rs.30</b>
+<p><input type="checkbox" name="Item8" value="Item8_chosen" onclick="tally()"><b> Mayo .................................................................................................................................................Rs.40</b>
+<p><input type="checkbox" name="Item9" value="Item9_chosen" onclick="tally()"> <b>Mint .........................................................................................................................................................Rs.50</b>
+ <br><br><br>
+    <b style="font-family:barial;color:green;"><h2>Filling</h2></b>
+<p><input type="checkbox" name="Item10" value="Item10_chosen" onclick="tally()"> <b>Veg .............................................................................................................................................................Rs.80</b>
+<p><input type="checkbox" name="Item11" value="Item11_chosen" onclick="tally()"> <b>Non-Veg ..........................................................................................................................................Rs.100</b>
+  <br><br><br><br><br><br>
+  <h2>Current order Bill</h2> 
+
+
+    </td></tr>
+<tr style="font-family:barial;color:red;">
+<td> Total <input type="text" name="Total" value="" size="7"></td>
+<td> Shipping charge (5%) <input type="text" name="PST" value=""  size="6"></td>
+<td colspan="2"> Vat charge. (12%) <input type="text" name="GST" value=""  size="6"></td>
+</tr>
+<tr style="font-family:barial;color:red;">
+<td> Grand Total <input type="text" name="GrandTotal" value="" size="8"><br><br><br><br><br><br></td>
+ 
+</tr>
+
+<td><h2>Shipping Address:-</h2></td>
+     
+    <tr style="font-family:barial;color:blue;">
+      <td>Contact Name:</td>
+      <td colspan="3">First <input type="Text" name="FirstName" size="15"
+      maxlength="20" placeholder="first name"> Last <input type="Text" name="LastName" size="15" maxlength="20" placeholder="last name"></td>
+    </tr>
+    <tr style="font-family:barial;color:blue;">
+      <td>Address</td>
+      <td><input type="Text" name="Street" size="20" maxlength="50" ></td>
+    </tr>
+    <tr style="font-family:barial;color:blue;">
+      <td>City</td>
+      <td><input type="Text" name="City" size="20" maxlength="20"> </td>
+      <td>Province/State:</td>
+      <td><input type="Text" name="Province" size="20" maxlength="40"></td>
+    </tr>
+    <tr style="font-family:barial;color:blue;">
+      <td>Country:</td>
+      <td><input type="Text" name="Country" size="20" maxlength="20" placeholder="india"></td>
+      <td>Code:</td> 
+      <td><input type="Text" name="Code" size="9" maxlength="10" placeholder="+91"></td>
+    </tr>
+    <tr>
+      <td style="font-family:barial;color:blue;">Phone:</td>
+      <td>  <input type="Text" name="Phone"
+      size="11" maxlength="11"></td>
+       
+    </tr>
+    <tr style="font-family:barial;color:blue;">
+      <td>Email Address:</td>
+      <td colspan=2><input type="Text" name="Email" size="30" maxlength="30" placeholder="john@gmail.com"></td>
+    </tr>
+      <tr><td colspan="4" height="3"><hr></td></tr>
+      <tr><td colspan="2" align="center"><input type="Submit" value="Send Order"></td>
+<td colspan="2" align="center"><input type="RESET" value="Reset Order"></td></tr>
+  </table>
+</form>
+
+</body>
+</html>

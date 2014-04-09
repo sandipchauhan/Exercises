@@ -1,0 +1,96 @@
+ <!DOCTYPE html>
+<html>
+<head><title>Memory game</title>
+  <style>
+        .cellFormat
+        {
+            background-color:black;
+            color: Black;
+            font-size: 35pt;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+    <body>
+    <script language="javascript" defer>
+        var symbols =
+         [
+            'AA', 'BB', 'CC', 'DD', 'EE', 'GG', 'KK', 'XX','YY','ZZ','RR','QQ','TT','FF','uu','SS','PP','LL','AA', 'BB', 'CC', 'DD', 'EE', 'GG', 'KK', 'XX','YY','ZZ','RR','QQ','TT','FF','uu','SS','PP','LL'];
+ 
+        var cellFirstId = '';
+        var cellSecondId = '';
+        var found = false;
+        var timeout = null;
+ 
+        function shuffle(array) {
+            return array.sort(function () { return 0.5 - Math.random() });
+        }
+ 
+        function drawTable() {
+            symbols = shuffle(symbols);
+ 
+            var tbod = document.getElementById('tbod');
+            for (var r = 0; r < 6; r++) {
+                var row = document.createElement('tr');
+                for (var c = 0; c < 6; c++) {
+                    var cell = document.createElement('td');
+                    var ct = document.createTextNode(symbols[(r * 6) + c]);
+                    cell.appendChild(ct);
+                    cell.id = "Cell" + r + c;
+                    cell.className = 'cellFormat';
+                    cell.onclick = cellClicked;
+                    row.appendChild(cell);
+                }
+                tbod.appendChild(row);
+            }
+        }
+ 
+        function cellClicked() {
+            if (this.style.color == '#ff0000' || timeout != null)
+                return;
+            this.style.color = '#ffffff'; // white
+            if (cellFirstId == '')
+                cellFirstId = this.id;
+            else {
+                cellSecondId = this.id;
+                var cellFirst = document.getElementById(cellFirstId);
+                if (cellFirstId == cellSecondId)
+                    found = false;
+                else if (cellFirst.firstChild.nodeValue != this.firstChild.nodeValue)
+                    found = false;
+                else
+                    found = true;
+                timeout = setTimeout(checkMatch, 2000);
+            }
+        }
+ 
+        function checkMatch() {
+            var cellFirst = document.getElementById(cellFirstId);
+            var cellSecond = document.getElementById(cellSecondId);
+            var newColor = 'black'; // black
+            if (found)
+                newColor = '#00ff00' // green
+            cellFirst.style.color = newColor;
+            cellSecond.style.color = newColor;
+            cellFirstId = '';
+            cellSecondId = '';
+            clearTimeout();
+            timeout = null;
+        }
+ 
+    </script>
+  
+    <h1 style="font-family:arial;color:blue ;">
+        Memory game</h1>
+    <table>
+        <tbody id="tbod">
+        </tbody>
+    </table>
+    </p>
+    <a href='#' onclick='drawTable()'>Start game</a>
+</body>
+</html>
+ 
+ 
+ 

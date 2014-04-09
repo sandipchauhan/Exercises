@@ -1,27 +1,117 @@
 <!DOCTYPE html>
 <html>
-<body>
-	<h1> click the button to add new row in table</h1>
-<table id="mytable">
-  <input type="text" value="name">
-  <input type="text" value="email">
-</table>
-</form>
-<button onlick="myFuntion()">try it</button>
-<script>
-function myFunction()
-{
-	var table=document.getElementById("mytable");
-	var row=table.insertRow();
-	var cell1 = row.insertCell(0);
-var cell2 = row.insertCell(1);
-cell1.innerHTML = "NEW CELL1";
-cell2.innerHTML = "NEW CELL2";
+  <head><title>Add new row in a table</title>
+     <style type="text/css">
+      table {border-collapse:collapse; border:2px solid black; width:50%;}
+      th,td {border:1px solid black;}
+    </style>
+  </head>
+  <body><h1>Add new row in a table</h1>
+    <table >
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id= "tbody" >
+    </tbody>
+    </table>
+    <input type="button" value="Add New Row" onclick="addRow()">
 
+  <script type="text/javascript">
+function addRow() { 
+    var oTBody, rowNo, name, mailId, saveButton, row;
+    oTBody = document.getElementById("tbody");
+    rowNo = oTBody.rows.length;
+    row = oTBody.insertRow(rowNo);
+    row.setAttribute("id",rowNo);
+    oTBody.rows[rowNo].insertCell(0);
+    name = document.createElement("input");
+    name.setAttribute("type","text" );
+    name.setAttribute("Class","name");
+    oTBody.rows[rowNo].cells[0].appendChild(name);
+    oTBody.rows[rowNo].insertCell(1);
+    mailId = document.createElement("input");
+    mailId.setAttribute("type","text");
+    mailId.setAttribute("Class","mailid");
+    oTBody.rows[rowNo].cells[1].appendChild(mailId);
+    oTBody.rows[rowNo].insertCell(2);
+    saveButton = document.createElement("input");
+    saveButton.setAttribute("type","button");
+    saveButton.setAttribute("Class","saveButton");
+    saveButton.setAttribute("value","Save");
+    saveButton.setAttribute("onclick","saveRow("+rowNo+")");
+    oTBody.rows[rowNo].cells[2].appendChild(saveButton);
 }
-
-</script>
-
+function saveRow(id) {
+    var cell, row, oname, name, oemail, mailId, button, savedName, savedMailId, link, editLink, linkText, deleteLink ;
+    row = document.getElementById(id);
+    oname = row.cells[0].getElementsByClassName("name")[0];
+    name = oname.value;
+    oemail = row.cells[1].getElementsByClassName("mailid")[0];
+    mailId = oemail.value;
+    button = row.cells[2].getElementsByClassName("saveButton")[0];
+    savedName = document.createTextNode(name);
+    savedMailId = document.createTextNode(mailId);
+    link = document.createElement("div");
+    link.setAttribute("Class","EditDeleteLink");
+    editLink = document.createElement("a");
+    editLink.setAttribute("onclick","editRow("+id+")");
+    editLink.setAttribute("style","cursor:pointer");
+    linkText = document.createTextNode("Edit/ ");
+    editLink.appendChild(linkText);
+    deleteLink = document.createElement("a");
+    deleteLink.setAttribute("onclick","deleteRow("+id+")");
+    deleteLink.setAttribute("style","cursor:pointer");
+    linkText = document.createTextNode(" Delete");
+    deleteLink.appendChild(linkText);
+    link.appendChild(editLink);
+    link.appendChild(deleteLink);
+    row.cells[0].replaceChild(savedName,oname);
+    row.cells[1].replaceChild(savedMailId,oemail);
+    row.cells[2].replaceChild(link,button);
+}
+function deleteRow(id) { 
+    var link, cell, row, oTBody, rowNo, i, saveButton, oldValue ;
+    row = document.getElementById(id);
+    oTBody = document.getElementById("tbody");
+    oTBody.removeChild(row);
+    rowNo = oTBody.rows.length;
+    for ( i=id; i<rowNo ;i++) {
+        row = oTBody.rows[i];
+        row.id = i;
+        saveButton = oTBody.rows[i].cells[2].getElementsByClassName("saveButton")[0]
+        saveButton.setAttribute("onclick","saveRow("+i+")");
+    }
+}
+function editRow(id) {  
+    var link, cell, row, oTBody, nameNode, nameText, mailNode, EmailId, links, name, mailId, saveButton ;
+    row = document.getElementById(id);
+    oTBody = document.getElementById("tbody");
+    nameText = oTBody.rows[id].cells[0].textContent;
+    EmailId = oTBody.rows[id].cells[1].textContent;
+    oTBody.rows[id].cells[0].textContent="";
+    oTBody.rows[id].cells[1].textContent="";
+    links = oTBody.rows[id].cells[2].getElementsByClassName("EditDeleteLink")[0];
+    name = document.createElement("input");
+    name.setAttribute("type","text");
+    name.setAttribute("Class","name");
+    name.setAttribute("value",nameText);
+    mailId = document.createElement("input");
+    mailId.setAttribute("type","text");
+    mailId.setAttribute("Class","mailid");
+    mailId.setAttribute("value",EmailId);
+    saveButton = document.createElement("input");
+    saveButton.setAttribute("type","button");
+    saveButton.setAttribute("Class","saveButton");
+    saveButton.setAttribute("value","Save");
+    saveButton.setAttribute("onclick","saveRow("+id+")");
+    row.cells[0].appendChild(name);
+    row.cells[1].appendChild(mailId);
+    row.cells[2].replaceChild(saveButton,links);
+}
+  </script>
 </body>
-
 </html>

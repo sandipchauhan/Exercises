@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <head>
+    <title>Name input in Alert and Welcome in page content</title>
+     <script type="text/javascript">
+     function callPrompt() 
+    {
+      
+        var firstName, lastName, name, authentic = false;
+        do {
+            firstName = prompt("Please enter your first name","");
+            firstName = firstName.trim();
+            if (firstName !== "") {
+                authentic = true;
+            }
+            if (authentic === false ) {
+            alert("Please enter valid value. you can't leave first name blank");
+            }
+        } while( authentic === false );
+        authentic = false;
+        do {
+            lastName = prompt("Please enter your last name","");
+            lastName = lastName.trim();
+            if (lastName !== "") {
+                authentic = true;
+            }
+            if ( authentic === false ) {
+                alert("Please enter valid value. you can't leave last name blank");
+            }
+        }while( authentic === false );
+        name= "Hello " + firstName + " " + lastName;
+        alert(name);
+        document.getElementById("name").innerHTML=name;
+    }
+    </script>
+  </head>
+  <body onload="callPrompt()"> <h1>Name input in alert and Welcome in page content</h1>
 
-<p>Click the button to demonstrate the prompt box.</p>
-
-<button onclick="myFunction()">Try it</button>
-
-<p id="demo"></p>
-
-<script>
-function myFunction()
-{
-var x;
-
-var person=prompt("Please enter your name","Harry Potter");
-
-if (person!=null)
-  {
-  x="Hello " + person + "! How are you today?";
-  document.getElementById("demo").innerHTML=x;
-  }
-}
-</script>
-
-</body>
+  <p id="name"></p>
+  </body>
 </html>

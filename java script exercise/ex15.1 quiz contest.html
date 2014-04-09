@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>
+Arithemetic Quiz
+</title>
+<body style="font-family:arial;color:Red ;">Remaining time is <div id="timer">2:00</div><br><br>
+      
+
+<script type="text/javascript">
+function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        var counter = document.getElementById("timer");
+        var current_minutes = mins-1
+        seconds--;
+        counter.innerHTML =
+current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+        } else {
+             
+            if(mins > 1){
+                 
+                setTimeout(function () { countdown(mins - 1); }, 1000);
+                     
+            }
+        }
+    }
+    tick();
+}
+ 
+countdown(2);
+ 
+ 
+</script>
+	
+	
+
+
+
+
+
+<script language=JavaScript>
+var i=1, num_Of_Question=20;
+questions = new Array() 
+questions[1]=" 3+5=5+3 ?";
+questions[2] ="3 x (4 + 6) = 3 x 4 + 3 x 6 ?";
+questions[3] =" 22.32+1.2 ?";
+questions[4] ="11 x 1 = 11 ?";
+questions[5] ="Root of 100 is?";
+questions[6] =" (6 + 7) + 9 = 6 + ( 7+9 ) ?";
+questions[7] =" 9 x 0 = 0 ?";
+questions[8] =" 100 + 4 / 2 = ?";
+questions[9] =" 9 + 9 / 9 * 8 =?";
+questions[10] =" 3x - 4(x + 6) = ?";
+questions[11] =" Which of the following is the Highest Common Factor of 18, 24 and 36?";
+questions[12] =" How many subsets does the set {a, b, c, d, e} have?";
+questions[13] =" A contractor completed five-ninths of a job before a second contractor completed an additional one-third. What fraction of the job is left undone?";
+questions[14] =" What is the value of  u  in the sequence     2 , 7 , 14 , 23 , 34 , u ??";
+questions[15] =" Find the remainder when 3^27 is divided by 5  ?";
+questions[16] =" How many natural numbers between 23 to 133 are divided 7 ?";
+questions[17] =" What is the smallest no.should be added to 5377 so that the sum is completly divided by 7 ?";
+questions[18] =" the diff off the cubes of two cunscutive even integer is divided by which of following integers ?";
+questions[19] =" How many 4 digit no. are completly divisible by 7 ?";
+questions[20] =" (1-1/n) + (1-2/n) + (1-3/n) +...... upto n terms = ?";
+
+
+
+
+answerA=new Array()
+answerA[1]="A: Associative property";
+answerA[2]="A: Associative property";
+answerA[3]="A: 22.52";
+answerA[4]="A: Commutative property";
+answerA[5]="A: 10";
+answerA[6]="A: Associative property";
+answerA[7]="A: Associative property";
+answerA[8]="A: 52";
+answerA[9]="A: 80";
+answerA[10]="A:-x - 24 ";
+answerA[11]="A: 6";
+answerA[12]="A: 5";
+answerA[13]="A: eight-ninths";
+answerA[14]="A: 47";
+answerA[15]="A: 2";
+answerA[16]="A: 12";
+answerA[17]="A: 4";
+answerA[18]="A: 3";
+answerA[19]="A: 1386";
+answerA[20]="A: 1/2(n-1)";
+
+
+
+ 
+
+answerB=new Array()
+answerB[1]="B: Commutative property";
+answerB[2]="B: Commutative property";
+answerB[3]="B: 23.52" ;
+answerB[4]="B: Identity property ";
+answerB[5]="B: 11";
+answerB[6]="B: Commutative property";
+answerB[7]="B: Commutative property";
+answerB[8]="B: 102";
+answerB[9]="B: 16";
+answerB[10]="B: x - 24  ";
+answerB[11]="B: 18";
+answerB[12]="B: 32";
+answerB[13]="B: two-thirds";
+answerB[14]="B: 46";
+answerB[15]="B: 3";
+answerB[16]="B: 16";
+answerB[17]="B: 5";
+answerB[18]="B: 4";
+answerB[19]="B: 1224";
+answerB[20]="B: 1/2n(n-1)";
+ 
+
+ 
+
+answerC=new Array()
+answerC[1]="C: Distributive property";
+answerC[2]="C: Distributive property";
+answerC[3]="C: 23.34";
+answerC[4]="C: Zero property";
+answerC[5]="C: 100";
+answerC[6]="C: Zero property";
+answerC[7]="C: Zero property";
+answerC[8]="C: 54";
+answerC[9]="C: 17";
+answerC[10]="C: 7x - 24 ";
+answerC[11]="C: 36";
+answerC[12]="C: 10";
+answerC[13]="C: one-ninth";
+answerC[14]="C: 45";
+answerC[15]="C: 4";
+answerC[16]="C: 17";
+answerC[17]="C: 6";
+answerC[18]="C: 5";
+answerC[19]="C: 1286";
+answerC[20]="C: none of these";
+
+
+ 
+rightAnswer=new Array()
+rightAnswer[1]=2;
+rightAnswer[2]=3;
+rightAnswer[3]=2;
+rightAnswer[4]=2;
+rightAnswer[5]=1;
+rightAnswer[6]=1;
+rightAnswer[7]=3;
+rightAnswer[8]=2;
+rightAnswer[9]=3;
+rightAnswer[10]=1;
+rightAnswer[11]=1;
+rightAnswer[12]=2;
+rightAnswer[13]=3;
+rightAnswer[14]=1;
+rightAnswer[15]=1;
+rightAnswer[16]=2;
+rightAnswer[17]=3;
+rightAnswer[18]=2;
+rightAnswer[19]=3;
+rightAnswer[20]=2;
+
+
+
+
+var score=0;
+function preQuestion()
+{
+var radios = document.getElementsByName("quiz");
+var option;
+
+    for (var j = 0; j < radios.length; j++) {       
+        if (radios[j].checked) {
+           option=radios[j].value;
+		radios[j].checked=false;
+            break;
+        }
+    }
+
+	if(option==rightAnswer[i])
+	{
+		score=score+1;
+		
+	}
+	
+	i--;	
+	if(i==0)
+	{
+	alert("This is first Question");
+	i++;
+	}
+	
+	var x=document.getElementById('myTable').rows
+    	var y=x[0].cells
+    	y[0].innerHTML=i + ".\t";
+	y[1].innerHTML=questions[i];
+	getOptionA();
+}
+function nextQuestion()
+{
+
+var radios = document.getElementsByName("quiz");
+var option;
+
+    for (var j = 0; j < radios.length; j++) {       
+        if (radios[j].checked) {
+           	option=radios[j].value;
+		radios[j].checked=false;
+            	break;
+        }
+    }
+
+	if(option==rightAnswer[i])
+	{
+		score=score+1;
+		
+	}
+	i++;
+	if(i>num_Of_Question)
+	{
+	alert("This is last Question");
+	i--;
+	}	
+	var x=document.getElementById('myTable').rows
+    	var y=x[0].cells
+    	y[0].innerHTML=i + ".\t";
+	y[1].innerHTML=questions[i];
+	getOptionA();
+}
+function getOptionA()
+{
+var x=document.getElementById('myTable').rows
+    	var y=x[1].cells
+    	y[1].innerHTML=answerA[i];
+getOptionB();
+}
+function getOptionB()
+{
+var x=document.getElementById('myTable').rows
+    	var y=x[2].cells
+    	y[1].innerHTML=answerB[i];
+getOptionC();
+}
+function getOptionC()
+{
+var x=document.getElementById('myTable').rows
+    	var y=x[3].cells
+    	y[1].innerHTML=answerC[i];
+}
+
+function showScore()  
+{
+var radios = document.getElementsByName("quiz");
+
+
+for (var j = 0; j < radios.length; j++) {       
+        
+           
+		radios[j].checked=false;
+        
+    }
+ alert  ("Your score is "+ score);
+}
+</script>
+
+ 
+
+
+</head>
+
+<form name=first method=post style="width:700px; height:500px; color:blue">
+ 
+
+
+
+
+
+
+<fieldset>
+<legend align=center> arithemetic quiz</legend>
+<table id=myTable style=" color:#ff0ff0">
+<tr>
+<td ><script language=JavaScript>
+//var i=1;
+document.write(i + ".\t");
+</script>
+</td>
+<td>
+<script language=JavaScript>
+document.write(questions[i]);
+</script>
+
+</td>
+</tr>
+<tr><td>
+<input type = "radio" value="1" name = "quiz"></td>
+<td>
+<script language=JavaScript>
+document.write(answerA[i]);
+</script></td></tr>
+<tr><td>
+<input type = "radio" value ="2" name = "quiz">
+</td><td>
+<script language=JavaScript>
+document.write(answerB[i]);
+</script></td></tr>
+<tr>
+<td>
+<input type = "radio" value ="3" name = "quiz"></td>
+<td>
+<script language=JavaScript>
+document.write(answerC[i]);
+</script></td></tr>
+<tr>
+</tr>
+</table>
+ <button onclick=javascript:showScore();> score </button>									
+<a href=javascript:nextQuestion();> submit>>
+</a>	
+
+</fieldset>
+</form>
+</body>
+</head>
+</html>
+
+
+
+

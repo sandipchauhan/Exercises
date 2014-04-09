@@ -1,50 +1,59 @@
-
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Max three boxes are selected</title>
 
 <body>
 <h1 align="center">Max three boxes are selected</h1>
 <form>
- <input type="checkbox" id="myCheck1">SUNDAY<br>
- <input type="checkbox" id="myCheck2">MONDAY<br>
- <input type="checkbox" id="myCheck3">TUESDAY<br>
- <input type="checkbox" onclick="myfunction()" id="myCheck4">WEDNESDAY<br>
- <input type="checkbox" onclick="myfunction()" id="myCheck5">THURSDAY<br>
- <input type="checkbox" onclick="myfunction()" id="myCheck6">FRIDAY<br>
- <input type="checkbox" onclick="myfunction()" id="myCheck7">SATURDAY<br><br>
- </form>
-<button onclick="checked()">check  </button>
-<button onclick="unchecked()">none </button>
+ <form>
+      <input type="checkbox" name="days" id="sunday" onclick="Check(this)">Sunday<br>
+      <input type="checkbox" name="days" id="monday" onclick="Check(this)">Monday<br>
+      <input type="checkbox" name="days" id="tuesday"onclick="Check(this)">Tuesday<br>
+      <input type="checkbox" name="days" id="wednesday" onclick="Check(this)">Wednesday<br>
+      <input type="checkbox" name="days" id="thursday" onclick="Check(this)">Thursday<br>
+      <input type="checkbox" name="days" id="friday" onclick="Check(this)">Friday<br>
+      <input type="checkbox" name="days" id="saturday" onclick="Check(this)">Saturday<br>
+    </form>
+       <br><br><input type="checkbox" id="noneSlected" onclick="unCheckAll()" >check None<br>
+
  
 <script>
-function checked()
-{
-	document.getElementById("myCheck1").checked=true;
-		document.getElementById("myCheck2").checked=true;
-
-	document.getElementById("myCheck3").checked=true;
-
+var checked = 0, checkedArr = [];
+function Check(element) {
+    "use strict";
+    var indexOfUncheckedElement, noneSelected = document.getElementById("noneSlected");
+    if (noneSelected.checked === true) {
+        noneSelected.checked = false;
+    }
+    if (element.checked === true) {
+        element.checked = false;
+        if (checked === 3) {
+            alert("Only 3 days can be selected. You have already selected" + " " + checkedArr.join(","));
+        } else {
+            element.checked = true;
+            checked++;
+            checkedArr.push(element.id);
+        }
+    } else {
+        element.checked = false;
+        checked--;
+        indexOfUncheckedElement = checkedArr.indexOf(element.id);
+        checkedArr.splice(indexOfUncheckedElement, 1);
+    }
 }
-function unchecked()
-{
-	
-		document.getElementById("myCheck2").checked=false;
-	document.getElementById("myCheck3").checked=false;
-		document.getElementById("myCheck4").checked=false;
 
-	document.getElementById("myCheck5").checked=false;
-		document.getElementById("myCheck6").checked=false;
-
-	document.getElementById("myCheck7").checked=false;
-}
- function myfunction()
-{
-	alert("max three boxes are selected");
-}
+function unCheckAll() {
+    "use strict";
+    var checkBox = document.getElementsByName("days"), i;
+    for (i = 0; i < checkBox.length; i++) {
+        checkBox[i].checked = false;
+    }
+    checked = 0;
+    ch
+  }
 </script>
 
-</ body>
+</body>
 
-</head>
 </html>

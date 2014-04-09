@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+   <title>Numeric matching</title>
+  <body><h1>Numeric matching</h1>
+    <form name="numericalValuesForm" onsubmit="return checkForValidity()">
+      <div>
+        <label for="EnterNumber">Enter Number </label>
+        <input type="text" name="textField" id="EnterNumber">
+      </div><br><br>
+      <div>
+        <label for="Result">Result </label>
+        <input type="text" name="textField" id="Result" >
+      </div><br><br>
+      <input type="submit" value="SUBMIT">
+    </form>
+    <script type="text/javascript">
+
+    function checkForValidity() {
+    var textFieldElement, input;
+    textFieldElement = document.getElementsByName("textField");
+    input = textFieldElement[0].value;
+    if (isNaN(input)) {
+        textFieldElement[1].value=false;
+        return false;
+    } else {
+        textFieldElement[1].setAttribute("value",true);
+        return true;
+    }
+}
+      </script>
+  </body>
+</html>

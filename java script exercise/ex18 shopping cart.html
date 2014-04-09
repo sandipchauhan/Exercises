@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head><title>Shopping cart</title>
+  <body style="background-color:yellow;"><script type="text/javascript" src="http://jscart.googlecode.com/svn/jscart.js"></script> 
+
+
+</head> 
+
+<ul>
+   <li class="simpleCart_shelfItem">
+      <h1 class="item_name" style="font-family:arial;color:CadetBlue ;">Puma T-Shirt</h1>
+      <p>Sale Price: <span class="item_price">Rs 400.00</span></p>
+      <img src="/JPEG image (image/jpeg)" />
+      <p>Select Size: 
+      <select class="item_Size">
+         <option value="Small">Small</option>
+         <option value="Medium">Medium</option>
+         <option value="Large">Large</option>
+      </select></p>
+      <p>Quantity: <input type="text" class="item_quantity" value="1" style="width:20px;" /></p>
+      <p><input type="button" class="item_add" value="Add to cart" /></p>
+   </li>
+   <li class="simpleCart_shelfItem">
+      <h1 class="item_name" style="font-family:arial;color:CadetBlue ;">Nike shoes</h1>
+            <p> <b>Price: <span class="item_price">Rs 4000.00</span></b></p>
+                        <p> Discount:- <span class="item_price">Rs 600.00</span></p>
+
+
+      <p><b>Sale Price: <span class="item_price">Rs 3400.00</b></span></p>
+      <img src="http://www.websitex.com/pictures/nike_shoes.jpg" />
+      <p>Select Size: 
+      <select class="item_Size">
+         <option value="Black">Black</option>
+         <option value="White">White</option>
+      </select></p>
+      <p>Quantity: <input type="text" class="item_quantity" value="1" style="width:20px;" /></p>
+      <p><input type="button" class="item_add" value="Add to cart" /></p>
+   </li>
+</ul>
+
+<ol>
+ Cart: <span class="simpleCart_total"></span> (<span class="simpleCart_quantity"></span> items) <br />
+   <a href="javascript:;" class="simpleCart_empty">Empty Cart</a> <a href="#" class="viewcart">Viewcart</a>
+</body><body>  
+
+
+   <div class="simpleCart_items" style="font-family:arial;color:blue ;" ></div>
+   
+   <div class="couponcode">Coupon Code<br>
+<input type="text" id="ccv" value=""  onchange="simpleCart.applydiscount()" /></div><button>apply</button><br/>
+
+
+<spam style="background-color:DarkGray; ">
+
+
+SubTotal: <span class="simpleCart_total"></span> <br />
+Tax: <span class="simpleCart_taxCost"></span><br />
+Shipping: <span class="simpleCart_shippingCost"></span><br />
+
+<span id="couponcode"></span><br />
+<b>Final Total: <span class="simpleCart_finalTotal"></span><br /></b>
+<a href="#" class="simpleCart_checkout"><button style="background-color:Chartreuse;">checkout</button></a>
+
+</ol>
+
+ 
+</body>
+</html>
